@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
         <meta name="csrf-token" content="{{ csrf_token() }}">
-
+        <link rel="stylesheet" href="/css/styles.css">
         <title>{{ config('app.name', 'White Dashboard') }}</title>
         <!-- Favicon -->
         <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('white') }}/img/apple-icon.png">
@@ -206,6 +206,19 @@
                 });
             });
         </script>
+        @php
+            if (session('msgA')) {
+              if (session('msgA') == 1) {
+                Alert::success('Salvo com Sucesso!!', '');
+              }if (session('msgA') == 2) {
+                Alert::success('Deletado com Sucesso!!', '');
+              }if (session('msgA') == 3) {
+                Alert::success('Atualizado com Sucesso!!', '');
+              }if (session('msgA') == 4) {
+                Alert::success('Inscricao Realizada com Sucesso!!', '');
+              }
+            }
+        @endphp
         @stack('js')
         @include('sweetalert::alert')
 

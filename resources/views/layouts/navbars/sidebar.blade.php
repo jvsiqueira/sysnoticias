@@ -14,7 +14,7 @@
             <li>
                 <a data-toggle="collapse" href="#laravel-examples" aria-expanded="true">
                     <i class="fab fa-laravel" ></i>
-                    <span class="nav-link-text" >{{ __('Laravel Examples') }}</span>
+                    <span class="nav-link-text" >{{ __('Usuario') }}</span>
                     <b class="caret mt-1"></b>
                 </a>
 
@@ -23,17 +23,23 @@
                         <li @if ($pageSlug == 'profile') class="active " @endif>
                             <a href="{{ route('profile.edit')  }}">
                                 <i class="tim-icons icon-single-02"></i>
-                                <p>{{ _('User Profile') }}</p>
+                                <p>{{ _('Perfill do Usuario') }}</p>
                             </a>
                         </li>
                         <li @if ($pageSlug == 'users') class="active " @endif>
                             <a href="{{ route('user.index')  }}">
                                 <i class="tim-icons icon-bullet-list-67"></i>
-                                <p>{{ _('User Management') }}</p>
+                                <p>{{ _('Controle do Usuario') }}</p>
                             </a>
                         </li>
                     </ul>
                 </div>
+            </li>
+            <li @if ($pageSlug == 'noticias') class="active " @endif>
+                <a href="/noticias">
+                    <i class="tim-icons icon-puzzle-10"></i>
+                    <p>{{ _('Noticias') }}</p>
+                </a>
             </li>
             <li @if ($pageSlug == 'icons') class="active " @endif>
                 <a href="{{ route('pages.icons') }}">

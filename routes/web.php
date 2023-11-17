@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NoticiaController;
+use App\Models\Noticia;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+	return view('welcome');
 });
 
 Auth::routes();
@@ -25,13 +27,19 @@ Auth::routes();
 Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home')->middleware('auth');
 
 Route::group(['middleware' => 'auth'], function () {
-		Route::get('icons', ['as' => 'pages.icons', 'uses' => 'App\Http\Controllers\PageController@icons']);
-		Route::get('maps', ['as' => 'pages.maps', 'uses' => 'App\Http\Controllers\PageController@maps']);
-		Route::get('notifications', ['as' => 'pages.notifications', 'uses' => 'App\Http\Controllers\PageController@notifications']);
-		Route::get('rtl', ['as' => 'pages.rtl', 'uses' => 'App\Http\Controllers\PageController@rtl']);
-		Route::get('tables', ['as' => 'pages.tables', 'uses' => 'App\Http\Controllers\PageController@tables']);
-		Route::get('typography', ['as' => 'pages.typography', 'uses' => 'App\Http\Controllers\PageController@typography']);
-		Route::get('upgrade', ['as' => 'pages.upgrade', 'uses' => 'App\Http\Controllers\PageController@upgrade']);
+	Route::get('icons', ['as' => 'pages.icons', 'uses' => 'App\Http\Controllers\PageController@icons']);
+	Route::get('maps', ['as' => 'pages.maps', 'uses' => 'App\Http\Controllers\PageController@maps']);
+	Route::get('notifications', ['as' => 'pages.notifications', 'uses' => 'App\Http\Controllers\PageController@notifications']);
+	Route::get('rtl', ['as' => 'pages.rtl', 'uses' => 'App\Http\Controllers\PageController@rtl']);
+	Route::get('tables', ['as' => 'pages.tables', 'uses' => 'App\Http\Controllers\PageController@tables']);
+	Route::get('typography', ['as' => 'pages.typography', 'uses' => 'App\Http\Controllers\PageController@typography']);
+	Route::get('upgrade', ['as' => 'pages.upgrade', 'uses' => 'App\Http\Controllers\PageController@upgrade']);
+	Route::get('/noticias', [NoticiaController::class, 'list']);
+	Route::get('/noticias/create', [NoticiaController::class, 'create']);
+	Route::post('/noticias', [NoticiaController::class, 'save']);
+	Route::get('/noticias/edit/{id}', [NoticiaController::class, 'edit']);
+	Route::put('/noticias/update/{id}', [NoticiaController::class, 'update']);
+	Route::delete('/noticias/{id}', [NoticiaController::class, 'destroy']);
 });
 
 Route::group(['middleware' => 'auth'], function () {
@@ -40,4 +48,3 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
 });
-
