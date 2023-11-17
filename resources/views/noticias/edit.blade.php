@@ -22,6 +22,11 @@
                                 @include('alerts.feedback', ['field' => 'titulo'])
                             </div>
                             <div class="form-group">
+                                <label>Autor</label>
+                                <input type="text" name="autor" class="form-control" placeholder="Autor" value="{{$noticia->autor}}">
+                                @include('alerts.feedback', ['field' => 'titulo'])
+                            </div>
+                            <div class="form-group">
                                 <label>Descrição</label>
                                 
                                 <textarea name="description" id="description" class="form-control" placeholder="Descricao da Noticia" rows="5" cols="33" value="{{$noticia->description}}">{{$noticia->description}}</textarea>

@@ -1,18 +1,19 @@
-@extends('layouts.app')
+@extends('layouts.app',['page' => __('Inicio')])
 
 @section('content')
-    <div class="header py-7 py-lg-8">
-        <div class="container">
-            <div class="header-body text-center mb-7">
-                <div class="row justify-content-center">
-                    <div class="col-lg-5 col-md-6">
-                        <h1 class="text-white">{{ __('Welcome!') }}</h1>
-                        <p class="text-lead text-light">
-                            {{ __('Use White Dashboard theme to create a great project.') }}
-                        </p>
-                    </div>
-                </div>
-            </div>
+<div id="cards-container" class="row">
+    @foreach($noticias as $noticia)
+    <div class="card col-md-3">
+        <img src="/img/noticias/{{ $noticia->image }}" alt="{{ $noticia->title }}">
+        <div class="card-body">
+            <p class="card-date">{{ date('d/m/Y', strtotime($noticia->created_at)) }}</p>
+            <h5 class="card-title">{{ $noticia->title }}</h5>
+            <a href="/noticias/{{ $noticia->id }}" class="btn btn-primary">Saber mais</a>
         </div>
     </div>
+    @endforeach
+    @if(count($noticias) == 0 )
+        <p>Não há Noticias disponíveis</p>
+    @endif
+</div>
 @endsection

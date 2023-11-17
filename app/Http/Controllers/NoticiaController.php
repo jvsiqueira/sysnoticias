@@ -9,6 +9,21 @@ use PHPUnit\Framework\TestStatus\Notice;
 
 class NoticiaController extends Controller
 {
+
+    public function inicio()
+    {
+        $noticias = Noticia::all();
+
+        return view('welcome', ['noticias' => $noticias]);
+    }
+
+    public function show($id)
+    {
+        $noticia = Noticia::findOrFail($id);
+
+        return view('/noticias.show', ['noticia' => $noticia]);
+    }
+
     public function list()
     {
         $search = request('procurar');
@@ -46,6 +61,7 @@ class NoticiaController extends Controller
         $user = auth()->user();
 
         $noticia->title = $request->title;
+        $noticia->autor = $request->autor;
         $noticia->description = $request->description;
         $noticia->user_id = $user->id;
         $noticia->status = $request->status;
