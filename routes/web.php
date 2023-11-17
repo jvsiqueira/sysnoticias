@@ -16,7 +16,7 @@ use App\Models\Noticia;
 */
 
 Route::get('/', [NoticiaController::class, 'inicio']);
-Route::get('/noticias/{id}', [NoticiaController::class, 'show']);
+Route::get('/noticias/home/{id}', [NoticiaController::class, 'show']);
 
 Auth::routes();
 

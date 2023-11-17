@@ -8,7 +8,7 @@
         <div class="card-body">
             <p class="card-date">{{ date('d/m/Y', strtotime($noticia->created_at)) }}</p>
             <h5 class="card-title">{{ $noticia->title }}</h5>
-            <a href="/noticias/{{ $noticia->id }}" class="btn btn-primary">Saber mais</a>
+            <a href="/noticias/home/{{ $noticia->id }}" class="btn btn-primary">Saber mais</a>
         </div>
     </div>
     @endforeach
