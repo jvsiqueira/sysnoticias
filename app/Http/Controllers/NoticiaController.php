@@ -11,15 +11,27 @@ class NoticiaController extends Controller
 {
     public function list()
     {
+        $search = request('procurar');
+
         $user = auth()->user();
         //$user->noticiasUser();
 
-        $noticias = Noticia::where([
-            ['user_id', '=', $user->id]
-        ])->get();
+        if ($search) {
+            # code...
+            $noticias = Noticia::where([
+                ['user_id', '=', $user->id],
+                ['title', 'like', '%' . $search . '%']
+            ])->get();
+        } else {
+            $noticias = Noticia::where([
+                ['user_id', '=', $user->id]
+            ])->get();
+        }
+
+
         // $noticias = Noticia::all();
 
-        return view('noticias.list', ['noticias' => $noticias]);
+        return view('noticias.list', ['noticias' => $noticias, 'search' => $search]);
     }
 
     public function create()

@@ -2,8 +2,17 @@
 
 @section('content')
 <div class="row">
+  
   <div class="col-md-12">
     <div class="card ">
+      <div id="search-container" class="col-md-12">
+        <form action="/noticias" method="GET">
+            <input type="text" id="procurar" name="procurar" class="form-control" placeholder="Procurar...">
+        </form>
+    </div>
+        @if($search)
+          <h2>Buscando por: {{ $search }}</h2>
+        @endif
         <div class="card-header">
             <div class="row">
                 <div class="col-8">
