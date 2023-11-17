@@ -6,7 +6,7 @@
     "routes": [
         {
             "src": "/build/(.*)",
-            "dest": "/public/build/"
+            "dest": "/public/"
         },
         {
             "src": "/resources/(.*)",
@@ -14,11 +14,7 @@
         },
         {
             "src": "/favicon/(.*)",
-            "dest": "/public/favicon/"
-        },
-        {
-            "src": "/(.*)",
-            "dest": "/api/index.php"
+            "dest": "/public/"
         }
     ],
     "env": {
